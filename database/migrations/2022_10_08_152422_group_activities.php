@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('activitie_groups', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->unsignedBigInteger('project_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
         });
     }
 

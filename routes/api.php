@@ -34,6 +34,16 @@ Route::group(['middleware' => 'api'], function(){
             Route::post('/AddUnit', 'ActivitieController@AddUnit')->name('addunit');
             Route::post('/EditUnit/{id}', 'ActivitieController@EditUnit')->name('editunit');
 
+            Route::group(['prefix'=>'group'], function(){
+
+            });
+            
+        });
+
+        Route::group(['prefix'=>'rain'], function(){
+
+            Route::get('/GetStations/{search}', 'RainController@GetStations')->name('getstations');
+
         });
 
     });

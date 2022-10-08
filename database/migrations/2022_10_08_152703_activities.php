@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('activitie', function (Blueprint $table) {
+        Schema::create('activities', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->decimal('count', 5, 2)->nullable();
@@ -27,8 +27,10 @@ return new class extends Migration
             $table->dateTime('endDate')->nullable();
             $table->unsignedBigInteger('subgroup_id')->nullable();
             $table->unsignedBigInteger('unit_id')->nullable();
+            $table->unsignedBigInteger('project_id')->nullable();
             $table->timestamps();
 
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->foreign('subgroup_id')->references('id')->on('activitie_subgroups')->onDelete('set null');
             $table->foreign('unit_id')->references('id')->on('units')->onDelete('set null');
         });

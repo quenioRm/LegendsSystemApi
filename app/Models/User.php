@@ -18,6 +18,7 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'project_id',
     ];
     /**
      * The attributes that should be hidden for arrays.
@@ -52,5 +53,13 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getJWTCustomClaims() {
         return [];
-    }    
+    }   
+    
+    public function projects(){
+        return $this->belongsTo('App\Models\Projects', 'project_id');
+    }
+
+    public function userprojects(){
+        return $this->hasMany('App\Models\userProjects', 'user_id');
+    }
 }

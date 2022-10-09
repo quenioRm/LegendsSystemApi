@@ -98,7 +98,7 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 120,
-            'user' => auth()->user()
+            'user' => User::with('userprojects.projects')->find(Auth::id())
         ]);
     }
 }

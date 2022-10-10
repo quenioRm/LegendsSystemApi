@@ -35,7 +35,7 @@ Route::group(['middleware' => 'api'], function(){
             Route::post('/EditUnit/{id}', 'ActivitieController@EditUnit')->name('editunit');
 
             Route::group(['prefix'=>'group'], function(){
-
+                Route::get('/GetAll', 'ActivitieGroupController@GetAll')->name('getall');
             });
             
         });
